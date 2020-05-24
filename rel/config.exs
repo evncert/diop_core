@@ -37,7 +37,6 @@ end
 environment :prod do
   set include_erts: true
   set include_src: false
-  set cookie: :"EoX>S}.4buQp9|MS&2NSQ&pFFqm<5kmyR>FCzKe)Sy{/8>2[?GQ!!.Sme}s=cu0N"
   set vm_args: "rel/vm.args"
 end
 
@@ -51,5 +50,18 @@ release :diop_core do
   set applications: [
     :runtime_tools
   ]
-end
 
+  set pre_configure_hooks: "rel/hooks/pre_configure"
+  set pre_start_hooks: "rel/hooks/pre_start"
+  set post_start_hooks: "rel/hooks/post_start"
+
+  set overlays: [
+    {:template, "rel/dioprc.example.eex", "dioprc.example"},
+    {:copy, "rel/provider.exs", "releases/<%= release.version %>/provider.exs"}
+  ]
+
+  set config_providers: [
+    {Distillery.Releases.Config.Providers.Elixir,
+    ["${RELEASE_ROOT_DIR}/releases/${REL_VSN}/provider.exs"]}
+  ]
+end

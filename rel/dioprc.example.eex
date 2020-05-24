@@ -1,0 +1,23 @@
+#!/bin/sh
+
+
+## Erlang Distribution Configuration
+
+## (required) unique nodename for erlang distribution
+export NODE_NAME=<%= release.name %>@127.0.0.1
+
+## (required) secure secret key, at least 64 bytes in length
+export NODE_COOKIE=
+
+
+## IMAP Configuration
+
+## (required) IMAP username, IMAP user password
+export IMAP_USERNAME=
+export IMAP_PASSWORD=
+
+## (optional, defaults to localhost) IMAP server host
+#export IMAP_HOST=
+
+## (optional, defaults to 993) IMAP server port
+#export IMAP_PORT=
