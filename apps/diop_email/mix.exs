@@ -16,7 +16,7 @@ defmodule DiopEmail.MixProject do
   def application do
     [
       extra_applications: [:logger],
-      mod: {DiopEmail.Application, []}
+      #mod: {DiopEmail.Application, []}
     ]
   end
 

@@ -10,6 +10,14 @@ export NODE_NAME=<%= release.name %>@127.0.0.1
 export NODE_COOKIE=
 
 
+## DIOP Core Configuration
+
+## List of input, output and parsing applications
+export DIOP_INPUTS=
+export DIOP_OUTPUTS=
+export DIOP_PARSERS=
+
+
 ## IMAP Configuration
 
 ## (required) IMAP username, IMAP user password
@@ -21,3 +29,12 @@ export IMAP_PASSWORD=
 
 ## (optional, defaults to 993) IMAP server port
 #export IMAP_PORT=
+
+## DIOP Email
+#export DOMAINS_MATCH=""
+
+
+## MatchingEngine
+#export ASN_LIST=""
+#export CIDR_LIST=""
+#export DATA_PATH=

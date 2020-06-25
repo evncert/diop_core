@@ -5,17 +5,16 @@ defmodule DiopCore.Application do
 
   use Application
 
-  def start(_type, _args) do
-    children = [
-      # Starts a worker by calling: DiopCore.Worker.start_link(arg)
-      # {DiopCore.Worker, arg}
-      {DiopCore.Server, []},
-      {DiopCore.Database, []},
-    ]
 
-    # See https://hexdocs.pm/elixir/Supervisor.html
-    # for other strategies and supported options
+  def get_children() do
+    core    = [{DiopCore.Server, []}]
+    inputs  = Application.get_env(:diop_core, :inputs) |> Enum.map(fn m -> {m, []} end)
+    outputs = Application.get_env(:diop_core, :outputs) |> Enum.map(fn m -> {m, []} end)
+    core ++ inputs ++ outputs
+  end
+
+  def start(_type, _args) do
     opts = [strategy: :one_for_one, name: DiopCore.Supervisor]
-    Supervisor.start_link(children, opts)
+    Supervisor.start_link(get_children(), opts)
   end
 end

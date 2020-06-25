@@ -1,7 +1,7 @@
 defmodule DiopCore do
   require Logger
 
-  def check_new_file(path) do
-    GenServer.cast(DiopCore.Server, {:new_file, path})
+  def check_new_files(files) do
+    GenServer.cast(DiopCore.Server, {:new_files, files})
   end
 end
